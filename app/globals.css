@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+  }
+}
+
+@layer components {
+  .bgr {
+    background: no-repeat bottom linear-gradient(to bottom, #fa0101, #f700c1);
+  }
+  .bgrdark {
+    background: no-repeat bottom linear-gradient(to bottom, #12f330, #2937f8);
+  }
+}
