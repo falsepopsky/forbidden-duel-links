@@ -5,8 +5,8 @@
   "extends": [
     "eslint:recommended",
     "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -33,5 +33,5 @@
       }
     ]
   },
-  "ignorePatterns": ["**/node_modules/*", "**/out/*", "**/.next/*"]
+  "ignorePatterns": ["**/node_modules/*", "**/out/*", "**/.next/*", "*.config.js"]
 }
