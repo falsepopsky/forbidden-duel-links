@@ -19,7 +19,7 @@ export const Navbar = () => {
   ));
 
   return (
-    <nav className='flex h-14 items-center justify-between border-b px-6 text-sm font-medium dark:border-y-zinc-800'>
+    <nav className='flex h-14 items-center justify-between border-b px-6 text-sm dark:border-y-zinc-800'>
       <Link
         href='/'
         aria-label='Link to home page'

@@ -5,7 +5,7 @@ import { Navbar } from './components/navbar';
 import './globals.css';
 
 const ibm_plex_sans = IBM_Plex_Sans({
-  weight: ['200', '300', '400', '500', '600'],
+  weight: ['200', '300', '400', '500'],
   style: 'normal',
   preload: false,
   display: 'swap',

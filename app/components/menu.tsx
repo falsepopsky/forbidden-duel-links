@@ -30,19 +30,19 @@ export function Menu() {
       </DropdownMenuTrigger>
       <DropdownMenuPortal>
         <DropdownMenuContent
-          className='min-w-fit rounded-md border bg-slate-50 p-1 shadow-lg will-change-[opacity,transform] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade dark:border-zinc-600 dark:bg-neutral-800 sm:hidden'
+          className='min-w-fit rounded-md border bg-slate-50 p-2 text-sm font-light shadow-lg will-change-[opacity,transform] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade dark:border-zinc-600 dark:bg-neutral-800 sm:hidden'
           sideOffset={6}
         >
-          <DropdownMenuLabel className='text-sm font-light'>Navigation</DropdownMenuLabel>
+          <DropdownMenuLabel>Navigation</DropdownMenuLabel>
           <DropdownMenuSeparator className='mb-2 mt-1 h-px bg-zinc-700' />
           <DropdownMenuItem
-            className='group relative flex h-[25px] select-none items-center rounded-sm px-1 text-[13px] leading-none outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-slate-200/60 data-[highlighted]:dark:bg-neutral-900/40'
+            className='relative flex h-[25px] select-none items-center rounded-sm px-1 outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-slate-200/60 data-[highlighted]:dark:bg-neutral-900/40'
             asChild
           >
             <Link href={'/banlist'}>Banlist</Link>
           </DropdownMenuItem>
           <DropdownMenuItem
-            className='group relative flex h-[25px] select-none items-center rounded-sm px-1 text-[13px] leading-none outline-none data-[highlighted]:bg-slate-200/60 data-[highlighted]:dark:dark:bg-neutral-900/40'
+            className='relative flex h-[25px] select-none items-center rounded-sm px-1 outline-none data-[highlighted]:bg-slate-200/60 data-[highlighted]:dark:dark:bg-neutral-900/40'
             asChild
           >
             <Link href={'/about'}>About</Link>
