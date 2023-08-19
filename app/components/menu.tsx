@@ -36,16 +36,16 @@ export function Menu() {
           <DropdownMenuLabel>Navigation</DropdownMenuLabel>
           <DropdownMenuSeparator className='mb-2 mt-1 h-px bg-zinc-700' />
           <DropdownMenuItem
-            className='relative flex h-[25px] select-none items-center rounded-sm px-1 outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-slate-200/60 data-[highlighted]:dark:bg-neutral-900/40'
+            className='relative flex h-[25px] select-none items-center rounded-sm px-1 outline-none data-[highlighted]:bg-slate-200/60 data-[highlighted]:dark:bg-neutral-900/40'
             asChild
           >
-            <Link href={'/banlist'}>Banlist</Link>
+            <Link href='/banlist'>Banlist</Link>
           </DropdownMenuItem>
           <DropdownMenuItem
-            className='relative flex h-[25px] select-none items-center rounded-sm px-1 outline-none data-[highlighted]:bg-slate-200/60 data-[highlighted]:dark:dark:bg-neutral-900/40'
+            className='relative flex h-[25px] select-none items-center rounded-sm px-1 outline-none data-[highlighted]:bg-slate-200/60 data-[highlighted]:dark:bg-neutral-900/40'
             asChild
           >
-            <Link href={'/about'}>About</Link>
+            <Link href='/about'>About</Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenuPortal>

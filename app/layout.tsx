@@ -1,7 +1,7 @@
-import Theme from '@/comp/theme';
+import { Navbar } from '@/comp/NavBar';
+import Theme from '@/comp/ThemeProvider';
 import { type Metadata } from 'next';
 import { IBM_Plex_Sans } from 'next/font/google';
-import { Navbar } from './components/navbar';
 import './globals.css';
 
 const ibm_plex_sans = IBM_Plex_Sans({

@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Menu } from './menu';
-import { ToggleTheme } from './toggle';
+import { Menu } from './Menu';
+import { ToggleTheme } from './ToggleTheme';
 
 export const Navbar = () => {
   const links = [
@@ -31,7 +31,7 @@ export const Navbar = () => {
       <div className='flex items-center gap-4'>
         {linkPages}
         <Menu />
-        <div className='hidden md:block md:h-5 md:w-px md:bg-neutral-300 md:dark:bg-zinc-800' />
+        <div className='hidden sm:block sm:h-5 sm:w-px sm:bg-neutral-300 sm:dark:bg-zinc-800' />
         <ToggleTheme />
       </div>
     </nav>
