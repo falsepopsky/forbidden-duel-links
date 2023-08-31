@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Banlist {
+  id           String        @id @default(uuid())
+  date         DateTime      @unique
+  restrictions Restriction[]
+}
+
+model Card {
+  id           String        @id @default(uuid())
+  name         String        @unique
+  type         CardType      @relation(fields: [typeId], references: [id])
+  typeId       String
+  restrictions Restriction[]
+}
+
+model Restriction {
+  id        String          @id @default(uuid())
+  type      RestrictionType @relation(fields: [typeId], references: [id])
+  typeId    String
+  card      Card            @relation(fields: [cardId], references: [id])
+  cardId    String
+  banlist   Banlist         @relation(fields: [banlistId], references: [id])
+  banlistId String
+}
+
+model RestrictionType {
+  id          String        @id @default(uuid())
+  name        String        @unique
+  Restriction Restriction[]
+}
+
+model CardType {
+  id   String @id @default(uuid())
+  name String @unique
+  Card Card[]
+}

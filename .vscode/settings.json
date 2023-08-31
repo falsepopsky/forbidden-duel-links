@@ -19,6 +19,9 @@
     "*.css": "tailwindcss"
   },
   "eslint.validate": ["typescript", "typescriptreact"],
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true
 }
