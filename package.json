@@ -9,7 +9,9 @@
     "clean:workspace": "rm -rf node_modules .next",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.2.0",
