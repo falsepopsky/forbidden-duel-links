@@ -1,40 +1,55 @@
+import { formatDateToDDMMYYYY, getBanlistDates } from '@/lib/queries';
 import Link from 'next/link';
 
-function getYearArray(): { id: number; year: string }[] {
-  const startYear = 2017;
-  const endYear = 2023;
-  const years: { id: number; year: string }[] = [];
+export default async function Banlist() {
+  const years = ['2023', '2022', '2021', '2020', '2019', '2018', '2017'];
+  const data = await getBanlistDates();
+  const dates = data?.map((item) => {
+    const date = formatDateToDDMMYYYY(item.date);
 
-  for (let year = startYear; year <= endYear; year++) {
-    years.push({ id: year - startYear, year: year.toString() });
-  }
+    return {
+      id: item.id,
+      date,
+    };
+  });
 
-  return years;
-}
+  const banlist = years.map((year, i) => {
+    const filterDatesByYear = dates?.filter((item) => item.date.includes(year));
 
-export default function Banlist() {
-  const yearArray = getYearArray();
-  const listYears = yearArray.map((yearObj) => {
-    const { id, year } = yearObj;
     return (
-      <li
-        key={id}
-        className='flex h-6 items-center justify-between border-b py-5 text-sm font-medium dark:border-y-zinc-800 hover:dark:bg-red-900'
+      <div
+        key={i}
+        className='flex flex-col rounded-md border border-gray-300 bg-slate-200/40 px-2 py-1 dark:border-transparent dark:bg-zinc-800/40'
       >
-        <Link
-          href={`/banlist/${year}`}
-          aria-label='Link to home page'
-          className='hover:opacity-80 focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600'
-        >
+        <span className='mx-auto mt-1 max-w-fit rounded-xl bg-teal-500 px-2 py-1 text-xs font-medium text-teal-950 dark:bg-teal-950 dark:text-teal-500'>
           {year}
-        </Link>
-      </li>
+        </span>
+        <ol className='mt-3 list-disc space-y-1 pl-4 text-sm marker:text-teal-900 dark:marker:text-teal-400'>
+          {filterDatesByYear?.map(({ id, date }) => (
+            <li key={id}>
+              <Link
+                href={`/banlist/${date}`}
+                className='focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600'
+              >
+                {date}
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </div>
     );
   });
 
   return (
-    <main className='flex flex-col flex-nowrap items-center justify-center gap-10'>
-      <ol className='mt-32 border-2 border-red-600'>{listYears}</ol>
+    <main className='mx-auto flex w-full max-w-screen-xl flex-col flex-nowrap items-center justify-center gap-4'>
+      <h1 className='mb-5 mt-28 min-w-fit bg-gradient-to-t from-zinc-900 to-zinc-600 bg-clip-text px-2 text-center text-4xl font-normal text-transparent drop-shadow-lg dark:from-teal-400 dark:to-teal-700 md:text-5xl/snug lg:mt-32 xl:mt-36'>
+        Banlist Archive
+      </h1>
+      <p className='mb-4 mt-6 max-w-lg px-2 text-center md:max-w-2xl md:text-lg/relaxed'>
+        Each year features the dates of the applied banlists, which contain the changes. Explore these dates to discover
+        how card restrictions have influenced competitive play.
+      </p>
+      <div className='my-4 flex flex-row flex-wrap items-start justify-center gap-2'>{banlist}</div>
     </main>
   );
 }
