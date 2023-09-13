@@ -19,7 +19,6 @@
       }
     ],
     "paths": {
-      "@/comp/*": ["./app/components/*"],
       "@/lib/*": ["./lib/*"]
     }
   },
