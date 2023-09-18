@@ -17,7 +17,7 @@ export function Menu() {
       <DropdownMenuTrigger asChild className='sm:hidden'>
         <button
           className='flex h-6 w-6 items-center justify-center rounded-md hover:bg-zinc-900/5 focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600 dark:hover:bg-white/5'
-          aria-label='Customise options'
+          aria-label='Navigation options'
           type='button'
         >
           <svg id='icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='currentColor'>
