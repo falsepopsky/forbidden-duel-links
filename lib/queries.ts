@@ -83,6 +83,9 @@ export async function getBanlistByDate(date: string) {
               },
             },
           },
+          orderBy: {
+            type: { name: 'asc' },
+          },
         },
       },
     });
