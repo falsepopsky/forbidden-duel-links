@@ -1,43 +1,147 @@
-'use client';
-
-import Tab from '@/comp/tab';
+import { formatDateToDDMMYYYY, formatDateToISO, getBanlistByDate, getBanlistDates } from '@/lib/queries';
 import Link from 'next/link';
+import { Tab } from '../Tab';
 
-export default function Post({ params }: { params: { slug: string } }) {
+interface TableProps {
+  cardType: string;
+  name: string;
+}
+
+export async function generateStaticParams() {
+  const data = await getBanlistDates();
+
+  if (!data) throw new Error("Can't generate Static Params");
+
+  return data.map((item) => {
+    const date = formatDateToDDMMYYYY(item.date);
+
+    return {
+      slug: date,
+    };
+  });
+}
+
+function TableRows({ cardType, name }: TableProps) {
+  if (cardType === 'Monster/Pendulum') {
+    return (
+      <tr className='odd:bg-slate-200/40 dark:odd:bg-zinc-800/40'>
+        <td className='border border-zinc-400 px-2 py-1 dark:border-zinc-800'>
+          <svg viewBox='0 0 24 32' width={26} height={26} className='stroke-gray-800'>
+            <defs>
+              <linearGradient id='pendulum' gradientTransform='rotate(90)'>
+                <stop offset='0%' stopColor='#f59e0b' />
+                <stop offset='100%' stopColor='#10b981' />
+              </linearGradient>
+            </defs>
+            <g fill='url(#pendulum)'>
+              <path d='M 0,0 V 31.999999 H 24.000001 V 0 Z M 20.000001,19.999999 H 4 V 4 h 16.000001 z' />
+            </g>
+          </svg>
+        </td>
+        <td className='border border-zinc-400 px-2 py-1 text-base/5 font-normal dark:border-zinc-800'>{name}</td>
+      </tr>
+    );
+  }
+
+  let cardTypeStyle: string;
+
+  switch (cardType) {
+    case 'Monster':
+      cardTypeStyle = 'fill-amber-300';
+      break;
+    case 'Monster/Effect':
+      cardTypeStyle = 'fill-amber-500';
+      break;
+    case 'Monster/Fusion':
+      cardTypeStyle = 'fill-violet-700';
+      break;
+    case 'Monster/Link':
+      cardTypeStyle = 'fill-blue-700';
+      break;
+    case 'Monster/Ritual':
+      cardTypeStyle = 'fill-indigo-400';
+      break;
+    case 'Monster/Synchro':
+      cardTypeStyle = 'fill-white';
+      break;
+    case 'Monster/Xyz':
+      cardTypeStyle = 'fill-black';
+      break;
+    case 'Spell':
+      cardTypeStyle = 'fill-emerald-500';
+      break;
+    default:
+      cardTypeStyle = 'fill-fuchsia-600';
+      break;
+  }
+
+  cardTypeStyle += ' stroke-gray-800';
+
   return (
-    <div>
-      <div className='mt-2 border'>
-        <Tab />
+    <tr className='odd:bg-slate-200/40 dark:odd:bg-zinc-800/40'>
+      <td className='border border-zinc-400 px-2 py-1 dark:border-zinc-800'>
+        <svg viewBox='0 0 24 32' width={26} height={26} className={cardTypeStyle}>
+          <path d='M 0,0 V 31.999999 H 24.000001 V 0 Z M 20.000001,19.999999 H 4 V 4 h 16.000001 z' />
+        </svg>
+      </td>
+      <td className='w-full border border-zinc-400 px-2 py-1 text-base/5 font-normal dark:border-zinc-800'>{name}</td>
+    </tr>
+  );
+}
+
+export default async function Post({ params }: { params: { slug: string } }) {
+  const { slug } = params;
+
+  const date = formatDateToISO(slug);
+  const data = await getBanlistByDate(date);
+  const filterByTypeRestriction = (type: string) => {
+    const typeExists = data?.restrictions.some((card) => card.type.name === type);
+    if (!typeExists) return null;
+    return data?.restrictions.filter((card) => card.type.name === type);
+  };
+
+  const free = filterByTypeRestriction('No Longer on List');
+  const limited = filterByTypeRestriction('Limited 1');
+  const limitedTwo = filterByTypeRestriction('Limited 2');
+  const limitedThree = filterByTypeRestriction('Limited 3');
+  const forbidden = filterByTypeRestriction('Forbidden');
+
+  const Free = free?.map(({ card }, i) => {
+    return <TableRows key={i} name={card.name} cardType={card.type.name} />;
+  });
+
+  const Forbidden = forbidden?.map(({ card }, i) => {
+    return <TableRows key={i} name={card.name} cardType={card.type.name} />;
+  });
+
+  const LimitedOne = limited?.map(({ card }, i) => {
+    return <TableRows key={i} name={card.name} cardType={card.type.name} />;
+  });
+
+  const LimitedTwo = limitedTwo?.map(({ card }, i) => {
+    return <TableRows key={i} name={card.name} cardType={card.type.name} />;
+  });
+  const LimitedThree = limitedThree?.map(({ card }, i) => {
+    return <TableRows key={i} name={card.name} cardType={card.type.name} />;
+  });
+
+  return (
+    <main className='mx-auto flex w-full max-w-screen-xl flex-col flex-nowrap gap-4'>
+      <h1 className='mb-5 mt-16 min-w-fit px-2 text-center font-normal md:text-5xl/snug lg:mt-24 xl:mt-28'>{slug}</h1>
+      <div className='mt-2 overflow-x-auto px-2 xl:px-0'>
+        <Tab free={Free} forbidden={Forbidden} limited1={LimitedOne} limited2={LimitedTwo} limited3={LimitedThree} />
       </div>
 
-      <p>Post: {params.slug}</p>
       <Link
         href='/banlist'
-        aria-label='Link to home page'
-        className='hover:opacity-80 focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600'
+        aria-label='Link to banlist page'
+        className='group ml-2 flex max-w-fit items-center gap-2 border border-blue-400 px-2 py-1 focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600 xl:ml-0'
       >
-        Go Back
+        <svg width={22} height={22} viewBox='0 0 32 32' fill='currentColor'>
+          <polygon points='14 26 15.41 24.59 7.83 17 28 17 28 15 7.83 15 15.41 7.41 14 6 4 16 14 26' />
+        </svg>
+        <span className='group-hover:opacity-80'>Go Back</span>
       </Link>
-
-      <div className='flex justify-center'>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 31.59 31.59' width={32} height={32}>
-          <path
-            fill='red'
-            d='M31.7,15.1c-6.59,0-15.79,5.13-15.79,15.8A15.79,15.79,0,0,0,31.7,46.69c7.15,0,15.8-5.64,15.8-15.79A15.8,15.8,0,0,0,31.7,15.1Zm0,28A12.16,12.16,0,0,1,22.29,23.2L38.37,41.06A12.09,12.09,0,0,1,31.7,43.06Zm9.6-4.72-16-17.77a12.14,12.14,0,0,1,16,17.77Z'
-            transform='translate(-15.91 -15.1)'
-          ></path>
-        </svg>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32' width={32} height={32}>
-          <path fill='currentColor' d='M20,15V47H44V15ZM40,35H24V19H40Z' transform='translate(-20 -15)'></path>
-        </svg>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 35.32' width={32} height={32}>
-          <path
-            fill='currentColor'
-            d='M26.09,16v3.57a10.85,10.85,0,0,0,.16-1.8A10.5,10.5,0,0,0,26.09,16Zm0,17.94H18a17,17,0,0,1-5.6,0H4.15V30a17.58,17.58,0,0,1-1.37-1.36v6.67H27.46V28.8a17.2,17.2,0,0,1-1.37,1.33ZM23.35,23.08V13.74L22,15.1v6.62H15.26l-1.37,1.36ZM4.15,1.35H26.09V5.44a14.34,14.34,0,0,1,1.37,1.33V0H2.78V6.93A17.71,17.71,0,0,1,4.15,5.56Zm0,16.83v0ZM8.26,9.25a10.62,10.62,0,0,0-1.38,1.3V22.36L8.26,21Zm6.92,23.58A15,15,0,1,0,0,17.83a15,15,0,0,0,15.19,15Zm12.54-15A12.56,12.56,0,0,1,7.47,27.55L25.06,10.13a12.29,12.29,0,0,1,2.67,7.65ZM15.19,5.37a12.54,12.54,0,0,1,8,2.82L5.5,25.65a12.3,12.3,0,0,1-2.84-7.87A12.47,12.47,0,0,1,15.19,5.37Z'
-            transform='translate(0.01)'
-          ></path>
-        </svg>
-      </div>
-    </div>
+    </main>
   );
 }
