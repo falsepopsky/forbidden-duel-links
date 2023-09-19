@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     'Stay up-to-date with the current Yu-Gi-Oh! Duel Links banlist. Our comprehensive resources provide all the latest information on banned and limited cards',
   keywords: 'Yu-Gi-Oh!, YuGiOh, Duel Links, Banlist',
-  colorScheme: 'dark light',
+  colorScheme: 'light dark',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
