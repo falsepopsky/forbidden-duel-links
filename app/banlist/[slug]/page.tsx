@@ -1,10 +1,15 @@
 import { formatDateToDDMMYYYY, formatDateToISO, getBanlistByDate, getBanlistDates } from '@/lib/queries';
+import { type Metadata } from 'next';
 import Link from 'next/link';
 import { Tab } from '../Tab';
 
 interface TableProps {
   cardType: string;
   name: string;
+}
+
+interface ParamsProps {
+  params: { slug: string };
 }
 
 export async function generateStaticParams() {
@@ -20,6 +25,18 @@ export async function generateStaticParams() {
     };
   });
 }
+
+export function generateMetadata({ params }: ParamsProps): Metadata {
+  const { slug } = params;
+
+  const titleWithDate = 'Duel Links Banlist Changes for ' + slug;
+
+  return {
+    title: titleWithDate,
+  };
+}
+
+export const dynamicParams = false;
 
 function TableRows({ cardType, name }: TableProps) {
   if (cardType === 'Monster/Pendulum') {
@@ -89,7 +106,7 @@ function TableRows({ cardType, name }: TableProps) {
   );
 }
 
-export default async function Post({ params }: { params: { slug: string } }) {
+export default async function Post({ params }: ParamsProps) {
   const { slug } = params;
 
   const date = formatDateToISO(slug);
