@@ -2,14 +2,25 @@
 
 import { Content, List, Root, Trigger } from '@radix-ui/react-tabs';
 
-export default function Tab() {
+interface TabProps {
+  forbidden: React.ReactNode;
+  limited1: React.ReactNode;
+  limited2: React.ReactNode;
+  limited3: React.ReactNode;
+  free: React.ReactNode;
+}
+
+export function Tab({ forbidden, limited1, limited2, limited3, free }: Partial<TabProps>) {
   return (
-    <Root className='flex min-w-fit flex-col'>
-      <List aria-label='Banlist restrictions' className='flex shrink-0'>
+    <Root className='flex min-w-full max-w-full flex-col border border-blue-400'>
+      <List
+        aria-label='Banlist restrictions'
+        className='flex border border-transparent border-b-gray-300 dark:border-b-zinc-800'
+      >
         <Trigger
           value='forbidden'
-          className='flex h-11 flex-1 items-center gap-1 border border-transparent outline-none data-[disabled]:cursor-not-allowed data-[state=active]:border-red-500 data-[disabled]:opacity-50'
-          disabled
+          className='flex h-11 flex-1 items-center justify-center gap-1 border border-transparent px-2 outline-none data-[disabled]:cursor-not-allowed data-[state=active]:border-b-teal-600 data-[disabled]:opacity-50 data-[state=active]:dark:border-b-teal-600 md:px-0'
+          disabled={forbidden ? false : true}
         >
           <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 59.957 59.97' width={24}>
             <path d='M23.506.754c10.21-2.45 21.71 1.2 28.64 9.1 10.41 11 10.42 29.28 0 40.28-8.12 9.2-21.77 12.34-33.13 7.74-12.64-4.87-20.69-18.44-18.72-31.88 1.56-12.24 11.12-22.71 23.21-25.24z' />
@@ -19,11 +30,12 @@ export default function Tab() {
             />
             <path d='M30.006 8.924c8.02-.11 15.63 4.8 19.04 12.02 3 6.14 2.6 13.4-.61 19.38l-31.57-26.87c3.88-2.83 8.27-4.62 13.14-4.53zm-18.44 10.74l31.59 26.86c-3.89 2.84-8.28 4.63-13.15 4.54-8.02.11-15.63-4.8-19.04-12.02-3-6.14-2.6-13.4.6-19.38z' />
           </svg>
-          <span className='hidden md:block'>Forbidden</span>
+          <span className='hidden lg:block'>Forbidden</span>
         </Trigger>
         <Trigger
-          value='tab2'
-          className='flex h-11 flex-1 items-center gap-1 border border-transparent outline-none data-[disabled]:cursor-not-allowed data-[state=active]:border-red-500 data-[disabled]:opacity-50'
+          value='limited1'
+          className='flex h-11 flex-1 items-center justify-center gap-1 border border-transparent px-2 outline-none data-[disabled]:cursor-not-allowed data-[state=active]:border-b-teal-600 data-[disabled]:opacity-50 data-[state=active]:dark:border-b-teal-600 md:px-0'
+          disabled={limited1 ? false : true}
         >
           <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60.015 60.002' width={24}>
             <path d='M23.522.742c6.77-1.63 14.06-.49 20.25 2.6 12.15 6.25 18.82 20.59 15.31 33.89-3.11 13.2-15.52 22.84-29.08 22.77-14.78.09-27.86-11.32-29.7-26-2.24-15.16 8.24-30.12 23.22-33.26z' />
@@ -37,11 +49,12 @@ export default function Tab() {
               fill='#ffce00'
             />
           </svg>
-          <span className='hidden md:block'>Limited 1</span>
+          <span className='hidden lg:block'>Limited 1</span>
         </Trigger>
         <Trigger
-          value='tab3'
-          className='flex h-11 flex-1 items-center gap-1 border border-transparent outline-none data-[disabled]:cursor-not-allowed data-[state=active]:border-red-500 data-[disabled]:opacity-50'
+          value='limited2'
+          className='flex h-11 flex-1 items-center justify-center gap-1 border border-transparent px-2 outline-none data-[disabled]:cursor-not-allowed data-[state=active]:border-b-teal-600 data-[disabled]:opacity-50 data-[state=active]:dark:border-b-teal-600 md:px-0'
+          disabled={limited2 ? false : true}
         >
           <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 59.975 59.956' width={24}>
             <path d='M23.493.745c9.97-2.37 21.21 1.03 28.15 8.59 7.44 7.49 10.23 19.32 7.01 29.37-2.08 7.31-7.32 13.54-13.83 17.36-11.09 6.35-25.64 4.85-34.97-3.93-7.49-6.6-11.18-17.26-9.42-27.07 1.86-11.85 11.32-21.85 23.06-24.32z' />
@@ -55,11 +68,12 @@ export default function Tab() {
               fill='#ffce00'
             />
           </svg>
-          <span className='hidden md:block'>Limited 2</span>
+          <span className='hidden lg:block'>Limited 2</span>
         </Trigger>
         <Trigger
-          value='tab4'
-          className='flex h-11 flex-1 items-center gap-1 border border-transparent outline-none data-[disabled]:cursor-not-allowed data-[state=active]:border-red-500 data-[disabled]:opacity-50'
+          value='limited3'
+          className='flex h-11 flex-1 items-center justify-center gap-1 border border-transparent px-2 outline-none data-[disabled]:cursor-not-allowed data-[state=active]:border-b-teal-600 data-[disabled]:opacity-50 data-[state=active]:dark:border-b-teal-600 md:px-0'
+          disabled={limited3 ? false : true}
         >
           <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 59.977 59.976' width={24}>
             <path d='M24.444.551c13.11-2.64 26.85 4.43 32.57 16.46 5.65 11.5 3.05 25.95-6.36 34.66-9.35 9.2-24.31 10.93-35.62 4.32-10.6-6.15-16.71-18.57-14.63-30.72 1.9-12.31 11.79-22.48 24.04-24.72z' />
@@ -73,11 +87,12 @@ export default function Tab() {
               fill='#ffce00'
             />
           </svg>
-          <span className='hidden md:block'>Limited 3</span>
+          <span className='hidden lg:block'>Limited 3</span>
         </Trigger>
         <Trigger
-          value='tab5'
-          className='flex h-11 flex-1 items-center gap-2 border border-transparent outline-none data-[disabled]:cursor-not-allowed data-[state=active]:border-red-500 data-[disabled]:opacity-50'
+          value='free'
+          className='flex h-11 flex-1 items-center justify-center gap-1 border border-transparent px-2 outline-none data-[disabled]:cursor-not-allowed data-[state=active]:border-b-teal-600 data-[disabled]:opacity-50 data-[state=active]:dark:border-b-teal-600 md:px-0'
+          disabled={free ? false : true}
         >
           <svg viewBox='0 0 43.09 38.46' width={24}>
             <path
@@ -85,14 +100,34 @@ export default function Tab() {
               fill='#ffce00'
             />
           </svg>
-          <span className='hidden md:block'>No Longer on List</span>
+          <span className='hidden lg:block'>No Longer on List</span>
         </Trigger>
       </List>
-      <Content value='forbidden'>Tab one content</Content>
-      <Content value='tab2'>Tab two content</Content>
-      <Content value='tab3'>Tab three content</Content>
-      <Content value='tab4'>Tab four content</Content>
-      <Content value='tab5'>NOL</Content>
+      <Content value='forbidden'>
+        <table className='my-4 border-collapse'>
+          <tbody>{forbidden}</tbody>
+        </table>
+      </Content>
+      <Content value='limited1'>
+        <table className='my-4 border-collapse'>
+          <tbody>{limited1}</tbody>
+        </table>
+      </Content>
+      <Content value='limited2'>
+        <table className='my-4 border-collapse'>
+          <tbody>{limited2}</tbody>
+        </table>
+      </Content>
+      <Content value='limited3'>
+        <table className='my-4 border-collapse'>
+          <tbody>{limited3}</tbody>
+        </table>
+      </Content>
+      <Content value='free'>
+        <table className='my-4 border-collapse'>
+          <tbody>{free}</tbody>
+        </table>
+      </Content>
     </Root>
   );
 }
