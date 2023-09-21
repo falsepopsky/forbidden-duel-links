@@ -1,0 +1,37 @@
+name: Bug report 🐛
+description: Did you encounter any unexpected behavior?
+title: "[Bug]: "
+labels: ["bug 🐛"]
+assignees: "falsepopsky"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report this bug. Before proceeding, please ensure that you have tested the issue with multiple browsers.
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      description: Which browser(s) are you experiencing the issue in?
+      multiple: true
+      options:
+        - Chrome
+        - Edge
+        - Firefox
+        - Safari
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Clearly describe the issue you encountered, providing as much detail as possible.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Describe the general steps to reproduce the error or problem. Include any necessary context or prerequisites.
+    validations:
+      required: true
