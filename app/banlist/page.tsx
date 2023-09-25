@@ -21,7 +21,7 @@ export default async function Banlist() {
         key={i}
         className='flex flex-col rounded-md border border-gray-300 bg-slate-200/40 px-2 py-1 dark:border-transparent dark:bg-zinc-800/40'
       >
-        <span className='mx-auto mt-1 max-w-fit rounded-xl bg-teal-500 px-2 py-1 text-xs font-medium text-teal-950 dark:bg-teal-950 dark:text-teal-500'>
+        <span className='mx-auto mt-1 max-w-fit rounded-xl bg-teal-500 px-2 py-1 text-xs font-normal text-teal-950 dark:bg-teal-950 dark:text-teal-500'>
           {year}
         </span>
         <ol className='mt-3 list-disc space-y-1 pl-4 text-sm marker:text-teal-900 dark:marker:text-teal-400'>

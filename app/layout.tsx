@@ -5,7 +5,7 @@ import Theme from './ThemeProvider';
 import './globals.css';
 
 const ibm_plex_sans = IBM_Plex_Sans({
-  weight: ['200', '300', '400', '500'],
+  weight: ['300', '400'],
   style: 'normal',
   preload: false,
   display: 'swap',
@@ -16,7 +16,11 @@ export const metadata: Metadata = {
   description:
     'Stay up-to-date with the current Yu-Gi-Oh! Duel Links banlist. Our comprehensive resources provide all the latest information on banned and limited cards',
   keywords: 'Yu-Gi-Oh!, YuGiOh, Duel Links, Banlist',
-  colorScheme: 'dark light',
+  colorScheme: 'light dark',
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#171717' },
+    { media: '(prefers-color-scheme: light)', color: '#f3f4f6' },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

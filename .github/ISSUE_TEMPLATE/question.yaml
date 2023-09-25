@@ -1,0 +1,18 @@
+name: Question ❓
+description: Usage question or discussion about the website.
+title: "[Question]: "
+labels: ["question ❓"]
+assignees: "falsepopsky"
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please note that this issue tracker is specifically for questions and discussions related to the website itself. If you want to report bugs or ask for features, we recommend using the other issue templates.
+  - type: textarea
+    id: question-summary
+    attributes:
+      label: Question for Forbidden Duel Links
+      description: "Let us know how we can assist you!"
+    validations:
+      required: true

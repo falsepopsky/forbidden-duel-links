@@ -1,0 +1,11 @@
+"🌐 web":
+  - "app/**"
+"📚 docs":
+  - "README.md"
+"💽 db":
+  - "prisma/**"
+  - "lib/**"
+"⚙️ configs":
+  - ".prettierrc"
+  - "next.config.js"
+  - ".eslintrc.json"

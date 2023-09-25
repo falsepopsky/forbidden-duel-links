@@ -1,0 +1,24 @@
+name: Feature request 🌟
+description: Do you have a suggestion for a new feature or improvement?
+title: "[Feature Request]: "
+labels: ["feature request 🌟"]
+assignees: "falsepopsky"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature or improvement! Please provide detailed information about your idea below.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Clearly describe the feature or improvement you'd like to see, providing as much detail as possible.
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Rationale
+      description: Explain why this feature or improvement would be valuable or beneficial.
+    validations:
+      required: true
