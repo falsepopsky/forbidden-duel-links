@@ -1,13 +1,5 @@
 import prisma from './prisma';
 
-function handleErrors(error: unknown) {
-  if (error instanceof Error) {
-    console.error('Error while querying the database: ', error.message);
-  } else {
-    console.log('Something went wrong: ', error);
-  }
-}
-
 /**
  * @description Format a Date object to a string in the format `DD-MM-YYYY`.
  * @param date - The Date object to be formatted.
@@ -38,64 +30,56 @@ export function formatDateToISO(date: string): string {
 }
 
 export async function getBanlistDates() {
-  try {
-    const data = await prisma.banlist.findMany({
-      where: {
-        date: {
-          gte: '2017-01-01T00:00:00Z',
-          lt: '2024-01-01T00:00:00Z',
-        },
+  const data = await prisma.banlist.findMany({
+    where: {
+      date: {
+        gte: '2017-01-01T00:00:00Z',
+        lt: '2024-01-01T00:00:00Z',
       },
-    });
+    },
+  });
 
-    if (!data) {
-      throw new Error('Banlist schema is empty');
-    }
-
-    return data;
-  } catch (error) {
-    handleErrors(error);
+  if (!data) {
+    throw new Error('Banlist schema is empty');
   }
+
+  return data;
 }
 
 export async function getBanlistByDate(date: string) {
-  try {
-    const data = await prisma.banlist.findUnique({
-      where: {
-        date,
-      },
-      include: {
-        restrictions: {
-          select: {
-            card: {
-              select: {
-                name: true,
-                type: {
-                  select: {
-                    name: true,
-                  },
+  const data = await prisma.banlist.findUnique({
+    where: {
+      date,
+    },
+    include: {
+      restrictions: {
+        select: {
+          card: {
+            select: {
+              name: true,
+              type: {
+                select: {
+                  name: true,
                 },
               },
             },
-            type: {
-              select: {
-                name: true,
-              },
+          },
+          type: {
+            select: {
+              name: true,
             },
           },
-          orderBy: {
-            type: { name: 'asc' },
-          },
+        },
+        orderBy: {
+          type: { name: 'asc' },
         },
       },
-    });
+    },
+  });
 
-    if (!data) {
-      throw new Error(`There are no banlist records for the date: ${date}`);
-    }
-
-    return data;
-  } catch (error) {
-    handleErrors(error);
+  if (!data) {
+    throw new Error(`There are no banlist records for the date: ${date}`);
   }
+
+  return data;
 }
