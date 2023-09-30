@@ -13,21 +13,11 @@ interface ParamsProps {
 }
 
 export async function generateStaticParams() {
-  try {
-    const data = await getBanlistDates();
+  const data = await getBanlistDates();
 
-    return data.map((item) => {
-      return {
-        slug: formatDateToDDMMYYYY(item.date),
-      };
-    });
-  } catch (e) {
-    if (e instanceof Error) {
-      console.error('Error while querying the database: ', e.message);
-    } else {
-      console.log('Something went wrong: ', e);
-    }
-  }
+  return data.map((item) => ({
+    slug: formatDateToDDMMYYYY(item.date),
+  }));
 }
 
 export function generateMetadata({ params }: ParamsProps): Metadata {
