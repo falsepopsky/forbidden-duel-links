@@ -15,24 +15,14 @@ interface ParamsProps {
 export async function generateStaticParams() {
   const data = await getBanlistDates();
 
-  if (!data) throw new Error("Can't generate Static Params");
-
-  return data.map((item) => {
-    const date = formatDateToDDMMYYYY(item.date);
-
-    return {
-      slug: date,
-    };
-  });
+  return data.map((item) => ({
+    slug: formatDateToDDMMYYYY(item.date),
+  }));
 }
 
 export function generateMetadata({ params }: ParamsProps): Metadata {
-  const { slug } = params;
-
-  const titleWithDate = 'Duel Links Banlist Changes for ' + slug;
-
   return {
-    title: titleWithDate,
+    title: 'Duel Links Banlist Changes for ' + params.slug,
   };
 }
 
@@ -152,7 +142,7 @@ export default async function Post({ params }: ParamsProps) {
       <Link
         href='/banlist'
         aria-label='Link to banlist page'
-        className='group ml-2 flex max-w-fit items-center gap-2 border border-blue-400 px-2 py-1 focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600 xl:ml-0'
+        className='group mb-6 ml-2 flex max-w-fit items-center gap-2 border border-blue-400 px-2 py-1 focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600 xl:ml-0'
       >
         <svg width={22} height={22} viewBox='0 0 32 32' fill='currentColor'>
           <polygon points='14 26 15.41 24.59 7.83 17 28 17 28 15 7.83 15 15.41 7.41 14 6 4 16 14 26' />
