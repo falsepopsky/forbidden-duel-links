@@ -1,18 +1,6 @@
 import prisma from './prisma';
 
 /**
- * @description Format a Date object to a string in the format `DD-MM-YYYY`.
- * @param date - The Date object to be formatted.
- * @returns The formatted date string.
- */
-export function formatDateToDDMMYYYY(date: Date): string {
-  const format = new Date(date);
-  return `${format.getUTCDate().toString().padStart(2, '0')}-${(format.getUTCMonth() + 1)
-    .toString()
-    .padStart(2, '0')}-${format.getUTCFullYear().toString()}`;
-}
-
-/**
  * @description Format a string Date `DD-MM-YYYY` to a string ISO format `YYYY-MM-DDTHH:MM:SS`.
  * @param date - The Date to be formatted.
  * @throws Will throw an error if the date format is invalid.
@@ -29,13 +17,14 @@ export function formatDateToISO(date: string): string {
   }
 }
 
-export async function getBanlistDates() {
+export async function getBanlistByFormat(format: number) {
   const data = await prisma.banlist.findMany({
     where: {
       date: {
         gte: '2017-01-01T00:00:00Z',
         lt: '2024-01-01T00:00:00Z',
       },
+      formatId: format,
     },
   });
 
@@ -46,10 +35,13 @@ export async function getBanlistDates() {
   return data;
 }
 
-export async function getBanlistByDate(date: string) {
-  const data = await prisma.banlist.findUnique({
+export async function getBanlistByDate(date: string, format: number) {
+  const data = await prisma.banlist.findFirst({
     where: {
-      date,
+      AND: {
+        formatId: format,
+        date,
+      },
     },
     include: {
       restrictions: {

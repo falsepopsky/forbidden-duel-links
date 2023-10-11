@@ -4,8 +4,9 @@ import { ToggleTheme } from './ToggleTheme';
 
 export const Navbar = () => {
   const links = [
-    { id: 1, name: 'Banlist', path: '/banlist' },
-    { id: 2, name: 'About', path: '/about' },
+    { id: 1, name: 'Speed', path: '/speed' },
+    { id: 2, name: 'Rush', path: '/rush' },
+    { id: 3, name: 'About', path: '/about' },
   ];
 
   const linkPages = links.map((link) => (

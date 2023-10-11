@@ -8,37 +8,46 @@ datasource db {
 }
 
 model Banlist {
-  id           String        @id @default(uuid())
-  date         DateTime      @unique
+  id           Int           @id @default(autoincrement())
+  date         DateTime
+  format       FormatType    @relation(fields: [formatId], references: [id])
+  formatId     Int
+  slug         String
   restrictions Restriction[]
 }
 
 model Card {
-  id           String        @id @default(uuid())
+  id           Int           @id @default(autoincrement())
   name         String        @unique
   type         CardType      @relation(fields: [typeId], references: [id])
-  typeId       String
+  typeId       Int
   restrictions Restriction[]
 }
 
 model Restriction {
   id        String          @id @default(uuid())
   type      RestrictionType @relation(fields: [typeId], references: [id])
-  typeId    String
+  typeId    Int
   card      Card            @relation(fields: [cardId], references: [id])
-  cardId    String
+  cardId    Int
   banlist   Banlist         @relation(fields: [banlistId], references: [id])
-  banlistId String
+  banlistId Int
 }
 
 model RestrictionType {
-  id          String        @id @default(uuid())
-  name        String        @unique
-  Restriction Restriction[]
+  id           Int           @id @default(autoincrement())
+  name         String        @unique
+  restrictions Restriction[]
 }
 
 model CardType {
-  id   String @id @default(uuid())
+  id   Int    @id @default(autoincrement())
   name String @unique
   Card Card[]
+}
+
+model FormatType {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  banlists Banlist[]
 }

@@ -39,7 +39,13 @@ export function Menu() {
             className='relative flex h-[25px] select-none items-center rounded-sm px-1 outline-none data-[highlighted]:bg-slate-200/60 data-[highlighted]:dark:bg-neutral-900/40'
             asChild
           >
-            <Link href='/banlist'>Banlist</Link>
+            <Link href='/speed'>Speed Duel</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            className='relative flex h-[25px] select-none items-center rounded-sm px-1 outline-none data-[highlighted]:bg-slate-200/60 data-[highlighted]:dark:bg-neutral-900/40'
+            asChild
+          >
+            <Link href='/rush'>Rush Duel</Link>
           </DropdownMenuItem>
           <DropdownMenuItem
             className='relative flex h-[25px] select-none items-center rounded-sm px-1 outline-none data-[highlighted]:bg-slate-200/60 data-[highlighted]:dark:bg-neutral-900/40'
