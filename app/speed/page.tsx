@@ -1,20 +1,18 @@
-import { formatDateToDDMMYYYY, getBanlistDates } from '@/lib/queries';
+import { getBanlistByFormat } from '@/lib/queries';
 import Link from 'next/link';
 
 export default async function Banlist() {
   const years = ['2023', '2022', '2021', '2020', '2019', '2018', '2017'];
-  const data = await getBanlistDates();
-  const dates = data?.map((item) => {
-    const date = formatDateToDDMMYYYY(item.date);
-
+  const data = await getBanlistByFormat(1);
+  const dates = data?.map(({ id, slug }) => {
     return {
-      id: item.id,
-      date,
+      id,
+      slug,
     };
   });
 
   const banlist = years.map((year, i) => {
-    const filterDatesByYear = dates?.filter((item) => item.date.includes(year));
+    const filterDatesByYear = dates?.filter((item) => item.slug.includes(year));
 
     return (
       <div
@@ -25,13 +23,13 @@ export default async function Banlist() {
           {year}
         </span>
         <ol className='mt-3 list-disc space-y-1 pl-4 text-sm marker:text-teal-900 dark:marker:text-teal-400'>
-          {filterDatesByYear?.map(({ id, date }) => (
+          {filterDatesByYear?.map(({ id, slug }) => (
             <li key={id}>
               <Link
-                href={`/banlist/${date}`}
+                href={`/speed/${slug}`}
                 className='focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600'
               >
-                {date}
+                {slug}
               </Link>
             </li>
           ))}
@@ -43,7 +41,7 @@ export default async function Banlist() {
   return (
     <main className='mx-auto flex w-full max-w-screen-xl flex-col flex-nowrap items-center justify-center gap-4'>
       <h1 className='mb-5 mt-28 min-w-fit bg-gradient-to-t from-zinc-900 to-zinc-600 bg-clip-text px-2 text-center text-4xl font-normal text-transparent drop-shadow-lg dark:from-teal-400 dark:to-teal-700 md:text-5xl/snug lg:mt-32 xl:mt-36'>
-        Banlist Archive
+        Speed Duel Banlist Archive
       </h1>
       <p className='mb-4 mt-6 max-w-lg px-2 text-center md:max-w-2xl md:text-lg/relaxed'>
         Each year features the dates of the applied banlists, which contain the changes. Explore these dates to discover

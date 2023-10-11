@@ -1,7 +1,7 @@
-import { formatDateToDDMMYYYY, formatDateToISO, getBanlistByDate, getBanlistDates } from '@/lib/queries';
+import { formatDateToISO, getBanlistByDate, getBanlistByFormat } from '@/lib/queries';
 import { type Metadata } from 'next';
 import Link from 'next/link';
-import { Tab } from '../Tab';
+import { Tab } from '../../Tab';
 
 interface TableProps {
   cardType: string;
@@ -13,10 +13,10 @@ interface ParamsProps {
 }
 
 export async function generateStaticParams() {
-  const data = await getBanlistDates();
+  const data = await getBanlistByFormat(2);
 
-  return data.map((item) => ({
-    slug: formatDateToDDMMYYYY(item.date),
+  return data.map(({ slug }) => ({
+    slug,
   }));
 }
 
@@ -100,7 +100,8 @@ export default async function Post({ params }: ParamsProps) {
   const { slug } = params;
 
   const date = formatDateToISO(slug);
-  const data = await getBanlistByDate(date);
+  const data = await getBanlistByDate(date, 2);
+
   const filterByTypeRestriction = (type: string) => {
     const typeExists = data?.restrictions.some((card) => card.type.name === type);
     if (!typeExists) return null;
@@ -140,8 +141,8 @@ export default async function Post({ params }: ParamsProps) {
       </div>
 
       <Link
-        href='/banlist'
-        aria-label='Link to banlist page'
+        href='/rush'
+        aria-label='Link to speed page'
         className='group mb-6 ml-2 flex max-w-fit items-center gap-2 border border-blue-400 px-2 py-1 focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600 xl:ml-0'
       >
         <svg width={22} height={22} viewBox='0 0 32 32' fill='currentColor'>
