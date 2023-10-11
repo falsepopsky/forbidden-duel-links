@@ -31,7 +31,8 @@
         "disallowTypeAnnotations": true,
         "fixStyle": "inline-type-imports"
       }
-    ]
+    ],
+    "no-console": "error"
   },
   "ignorePatterns": ["**/node_modules/*", "**/out/*", "**/.next/*", "*.config.js"]
 }
