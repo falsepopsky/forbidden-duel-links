@@ -1,4 +1,4 @@
-import { type Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { IBM_Plex_Sans } from 'next/font/google';
 import { Navbar } from './NavBar';
 import Theme from './ThemeProvider';
@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   description:
     'Stay up-to-date with the current Yu-Gi-Oh! Duel Links banlist. Our comprehensive resources provide all the latest information on banned and limited cards',
   keywords: 'Yu-Gi-Oh!, YuGiOh, Duel Links, Banlist',
+};
+
+export const viewport: Viewport = {
   colorScheme: 'light dark',
   themeColor: [
     { media: '(prefers-color-scheme: dark)', color: '#171717' },
