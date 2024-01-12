@@ -8,7 +8,7 @@ on:
       - main
 
 env:
-  PNPM_VERSION: 8.12.1
+  PNPM_VERSION: 8.14.1
 
 jobs:
   lint:
@@ -24,7 +24,7 @@ jobs:
           version: ${{ env.PNPM_VERSION }}
 
       - name: Setup Node
-        uses: actions/setup-node@v3.8.1
+        uses: actions/setup-node@v4.0.1
         with:
           node-version-file: ".nvmrc"
           cache: pnpm
@@ -47,7 +47,7 @@ jobs:
           version: ${{ env.PNPM_VERSION }}
 
       - name: Setup Node
-        uses: actions/setup-node@v3.8.1
+        uses: actions/setup-node@v4.0.1
         with:
           node-version-file: ".nvmrc"
           cache: pnpm
