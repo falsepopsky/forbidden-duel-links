@@ -2,7 +2,7 @@ import { getBanlistByFormat } from '@/lib/queries';
 import Link from 'next/link';
 
 export default async function Banlist() {
-  const years = ['2023', '2022', '2021', '2020', '2019', '2018', '2017'];
+  const years = ['2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017'];
   const data = await getBanlistByFormat(1);
   const dates = data?.map(({ id, slug }) => {
     return {

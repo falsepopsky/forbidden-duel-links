@@ -22,7 +22,7 @@ export async function getBanlistByFormat(format: number) {
     where: {
       date: {
         gte: '2017-01-01T00:00:00Z',
-        lt: '2024-01-01T00:00:00Z',
+        lt: '2025-01-01T00:00:00Z',
       },
       formatId: format,
     },
