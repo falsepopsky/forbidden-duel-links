@@ -14,8 +14,8 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^5.8.0",
-    "next": "^14.0.4",
+    "@prisma/client": "^5.10.2",
+    "next": "^14.1.0",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -23,18 +23,18 @@
   "devDependencies": {
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-tabs": "^1.0.4",
-    "@types/node": "^20.11.0",
-    "@types/react": "^18.2.47",
-    "@typescript-eslint/eslint-plugin": "^6.18.1",
-    "@typescript-eslint/parser": "^6.18.1",
-    "autoprefixer": "^10.4.16",
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.2.57",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
-    "eslint-config-next": "^14.0.4",
+    "eslint-config-next": "^14.1.0",
     "eslint-config-prettier": "^9.1.0",
-    "postcss": "^8.4.33",
-    "prettier": "^3.1.1",
+    "postcss": "^8.4.35",
+    "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
-    "prisma": "^5.8.0",
+    "prisma": "^5.10.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   },
@@ -42,5 +42,5 @@
     "node": "^18.18.2 || ^20.0.0",
     "pnpm": ">=8"
   },
-  "packageManager": "pnpm@8.14.1+sha256.2df78e65d433d7693b9d3fbdaf431b2d96bb4f96a2ffecd51a50efe16e50a6a8"
+  "packageManager": "pnpm@8.15.3+sha256.fc4a49bd609550a41e14d20efbce802a4b892aa4cac877322de2f0924f122991"
 }
