@@ -1,10 +1,10 @@
 {
-  "name": "Forbidden Duel Links Dev Container",
+  "name": "Forbidden Duel Links",
   "image": "mcr.microsoft.com/devcontainers/base:jammy",
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "nodeGypDependencies": true,
-      "version": "20.11.1",
+      "version": "20.12.2",
       "nvmVersion": "latest"
     }
   },
@@ -12,11 +12,10 @@
     "vscode": {
       "extensions": [
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
         "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
         "bradlc.vscode-tailwindcss",
         "prisma.prisma",
-        "pkief.material-icon-theme",
         "github.vscode-github-actions",
         "github.vscode-pull-request-github"
       ]
