@@ -7,4 +7,4 @@ all the latest information on banned and limited cards
 
 `Forbidden Duel Links` is licensed under the
 [Apache-2.0](https://github.com/falsepopsky/forbidden-duel-links/blob/main/LICENSE) license - ©
-2023 [falsepopsky](https://github.com/falsepopsky).
+2023 - Present [falsepopsky](https://github.com/falsepopsky).
