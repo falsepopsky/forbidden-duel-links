@@ -1,11 +1,17 @@
 "🌐 web":
-  - "app/**"
+  - changed-files:
+      - any-glob-to-any-file: app/**
 "📚 docs":
-  - "README.md"
+  - changed-files:
+      - any-glob-to-any-file: README.md
 "💽 db":
-  - "prisma/**"
-  - "lib/**"
+  - changed-files:
+      - any-glob-to-any-file:
+          - prisma/**
+          - lib/**
 "⚙️ configs":
-  - ".prettierrc"
-  - "next.config.js"
-  - ".eslintrc.json"
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".prettierrc"
+          - next.config.js
+          - ".eslintrc.json"

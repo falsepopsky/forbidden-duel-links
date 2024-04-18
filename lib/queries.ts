@@ -17,34 +17,71 @@ export function formatDateToISO(date: string): string {
   }
 }
 
-export async function getBanlistByFormat(format: number) {
-  const data = await prisma.banlist.findMany({
-    where: {
-      date: {
-        gte: '2017-01-01T00:00:00Z',
-        lt: '2025-01-01T00:00:00Z',
-      },
-      formatId: format,
-    },
-  });
+export async function getRushBanlists() {
+  const data = await prisma.rushBanlist.findMany();
 
   if (!data) {
-    throw new Error('Banlist schema is empty');
+    throw new Error('Rush banlist schema is empty');
   }
 
   return data;
 }
 
-export async function getBanlistByDate(date: string, format: number) {
-  const data = await prisma.banlist.findFirst({
+export async function getRushBanlistByDate(date: string) {
+  const data = await prisma.rushBanlist.findFirst({
     where: {
-      AND: {
-        formatId: format,
-        date,
-      },
+      date,
     },
     include: {
-      restrictions: {
+      RushRestriction: {
+        select: {
+          card: {
+            select: {
+              name: true,
+              type: {
+                select: {
+                  name: true,
+                },
+              },
+            },
+          },
+          type: {
+            select: {
+              name: true,
+            },
+          },
+        },
+        orderBy: {
+          type: { name: 'asc' },
+        },
+      },
+    },
+  });
+
+  if (!data) {
+    throw new Error(`There are no banlist records for the date: ${date}`);
+  }
+
+  return data;
+}
+
+export async function getSpeedBanlists() {
+  const data = await prisma.speedBanlist.findMany();
+
+  if (!data) {
+    throw new Error('Rush banlist schema is empty');
+  }
+
+  return data;
+}
+
+export async function getSpeedBanlistByDate(date: string) {
+  const data = await prisma.speedBanlist.findFirst({
+    where: {
+      date,
+    },
+    include: {
+      SpeedRestriction: {
         select: {
           card: {
             select: {
