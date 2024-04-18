@@ -7,47 +7,66 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-model Banlist {
-  id           Int           @id @default(autoincrement())
-  date         DateTime
-  format       FormatType    @relation(fields: [formatId], references: [id])
-  formatId     Int
-  slug         String
-  restrictions Restriction[]
+model SpeedBanlist {
+  id               Int                @id @default(autoincrement())
+  date             DateTime
+  slug             String
+  SpeedRestriction SpeedRestriction[]
 }
 
-model Card {
-  id           Int           @id @default(autoincrement())
-  name         String        @unique
-  type         CardType      @relation(fields: [typeId], references: [id])
-  typeId       Int
-  restrictions Restriction[]
+model SpeedCard {
+  id               Int                @id @default(autoincrement())
+  name             String             @unique
+  type             CardType           @relation(fields: [typeId], references: [id])
+  typeId           Int
+  SpeedRestriction SpeedRestriction[]
 }
 
-model Restriction {
+model SpeedRestriction {
   id        String          @id @default(uuid())
   type      RestrictionType @relation(fields: [typeId], references: [id])
   typeId    Int
-  card      Card            @relation(fields: [cardId], references: [id])
+  card      SpeedCard       @relation(fields: [cardId], references: [id])
   cardId    Int
-  banlist   Banlist         @relation(fields: [banlistId], references: [id])
+  banlist   SpeedBanlist    @relation(fields: [banlistId], references: [id])
   banlistId Int
 }
 
-model RestrictionType {
-  id           Int           @id @default(autoincrement())
-  name         String        @unique
-  restrictions Restriction[]
+model RushBanlist {
+  id              Int               @id @default(autoincrement())
+  date            DateTime
+  slug            String
+  RushRestriction RushRestriction[]
+}
+
+model RushCard {
+  id              Int               @id @default(autoincrement())
+  name            String            @unique
+  type            CardType          @relation(fields: [typeId], references: [id])
+  typeId          Int
+  RushRestriction RushRestriction[]
+}
+
+model RushRestriction {
+  id        String          @id @default(uuid())
+  type      RestrictionType @relation(fields: [typeId], references: [id])
+  typeId    Int
+  card      RushCard        @relation(fields: [cardId], references: [id])
+  cardId    Int
+  banlist   RushBanlist     @relation(fields: [banlistId], references: [id])
+  banlistId Int
 }
 
 model CardType {
-  id   Int    @id @default(autoincrement())
-  name String @unique
-  Card Card[]
+  id        Int         @id @default(autoincrement())
+  name      String      @unique
+  SpeedCard SpeedCard[]
+  RushCard  RushCard[]
 }
 
-model FormatType {
-  id       Int       @id @default(autoincrement())
-  name     String    @unique
-  banlists Banlist[]
+model RestrictionType {
+  id    Int                @id @default(autoincrement())
+  name  String             @unique
+  rush  RushRestriction[]
+  speed SpeedRestriction[]
 }
