@@ -1,4 +1,4 @@
-import { formatDateToISO, getBanlistByDate, getBanlistByFormat } from '@/lib/queries';
+import { formatDateToISO, getSpeedBanlistByDate, getSpeedBanlists } from '@/lib/queries';
 import { type Metadata } from 'next';
 import Link from 'next/link';
 import { Tab } from '../../Tab';
@@ -13,7 +13,7 @@ interface ParamsProps {
 }
 
 export async function generateStaticParams() {
-  const data = await getBanlistByFormat(1);
+  const data = await getSpeedBanlists();
 
   return data.map(({ slug }) => ({
     slug,
@@ -100,12 +100,12 @@ export default async function Post({ params }: ParamsProps) {
   const { slug } = params;
 
   const date = formatDateToISO(slug);
-  const data = await getBanlistByDate(date, 1);
+  const data = await getSpeedBanlistByDate(date);
 
   const filterByTypeRestriction = (type: string) => {
-    const typeExists = data?.restrictions.some((card) => card.type.name === type);
+    const typeExists = data?.SpeedRestriction.some((card) => card.type.name === type);
     if (!typeExists) return null;
-    return data?.restrictions.filter((card) => card.type.name === type);
+    return data?.SpeedRestriction.filter((card) => card.type.name === type);
   };
 
   const free = filterByTypeRestriction('No Longer on List');

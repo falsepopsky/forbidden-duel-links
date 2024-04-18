@@ -1,9 +1,9 @@
-import { getBanlistByFormat } from '@/lib/queries';
+import { getRushBanlists } from '@/lib/queries';
 import Link from 'next/link';
 
 export default async function Banlist() {
   const years = ['2024', '2023'];
-  const data = await getBanlistByFormat(2);
+  const data = await getRushBanlists();
   const dates = data?.map(({ id, slug }) => {
     return {
       id,
