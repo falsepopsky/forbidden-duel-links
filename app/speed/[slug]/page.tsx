@@ -1,8 +1,7 @@
+import { TableRows, getSvgMapElement, type SVGKEYS } from '@/app/Shared';
 import { formatDateToISO, getSpeedBanlistByDate, getSpeedBanlists } from '@/lib/queries';
 import { type Metadata } from 'next';
 import Link from 'next/link';
-import type { SVGKEYS } from '../../rush/[slug]/page';
-import { TableRows, getSvgMapElement } from '../../rush/[slug]/page';
 
 interface ParamsProps {
   params: { slug: string };

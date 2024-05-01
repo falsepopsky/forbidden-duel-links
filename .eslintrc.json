@@ -24,6 +24,7 @@
         "fixMixedExportsWithInlineTypeSpecifier": true
       }
     ],
+    "typescript-eslint/no-unsafe-call": "0",
     "@typescript-eslint/consistent-type-imports": [
       "error",
       {
