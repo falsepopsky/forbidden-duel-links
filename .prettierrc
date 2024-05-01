@@ -1,5 +1,5 @@
 {
-  "bracketSameLine": false,
+  "bracketSameLine": true,
   "embeddedLanguageFormatting": "auto",
   "htmlWhitespaceSensitivity": "css",
   "proseWrap": "never",
