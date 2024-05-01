@@ -17,8 +17,7 @@ export default async function Banlist() {
     return (
       <div
         key={i}
-        className='flex flex-col rounded-md border border-gray-300 bg-slate-200/40 px-2 py-1 dark:border-transparent dark:bg-zinc-800/40'
-      >
+        className='flex flex-col rounded-md border border-gray-300 bg-slate-200/40 px-2 py-1 dark:border-transparent dark:bg-zinc-800/40'>
         <span className='mx-auto mt-1 max-w-fit rounded-xl bg-teal-500 px-2 py-1 text-xs font-normal text-teal-950 dark:bg-teal-950 dark:text-teal-500'>
           {year}
         </span>
@@ -27,8 +26,7 @@ export default async function Banlist() {
             <li key={id}>
               <Link
                 href={`/speed/${slug}`}
-                className='focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600'
-              >
+                className='focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600'>
                 {slug}
               </Link>
             </li>

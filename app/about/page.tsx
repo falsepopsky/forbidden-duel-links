@@ -55,8 +55,7 @@ export default function About() {
             <a
               href='https://github.com/falsepopsky/forbidden-duel-links/blob/main/.github/CONTRIBUTING.md'
               className='text-zinc-800 dark:text-slate-100'
-              aria-label='Contributing docs in GitHub'
-            >
+              aria-label='Contributing docs in GitHub'>
               CONTRIBUTING
             </a>{' '}
             guide.
