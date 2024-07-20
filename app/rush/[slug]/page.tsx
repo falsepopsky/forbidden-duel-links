@@ -45,7 +45,7 @@ export default async function Post({ params }: ParamsProps) {
           return (
             <a
               href={`#${type.toLowerCase().replaceAll(' ', '-')}`}
-              className='flex h-11 items-center gap-1 rounded-sm border border-[#256860] bg-[#f3fbf9] px-2 hover:border-[#2b7d74] dark:bg-[#101b19]'
+              className='flex h-11 items-center gap-1 rounded-sm border border-[#256860] bg-teal-100/70 px-2 hover:border-[#2b7d74] dark:bg-[#101b19]'
               key={type}>
               {getSvgMapElement(type.toLowerCase().replaceAll(' ', '-') as SVGKEYS)}
             </a>
@@ -58,7 +58,7 @@ export default async function Post({ params }: ParamsProps) {
           <div key={type} className='mb-3 mt-6 px-2 xl:px-0'>
             <h2
               id={type.toLowerCase().replaceAll(' ', '-')}
-              className='rounded-t-md border border-[#256860] border-b-transparent bg-[#f3fbf9] pl-1 pt-1 text-lg/snug dark:bg-[#101b19]'>
+              className='rounded-t-md border border-[#256860] border-b-transparent bg-teal-100/70 pl-1 pt-1 text-lg/snug dark:bg-[#101b19]'>
               {type}
             </h2>
 
