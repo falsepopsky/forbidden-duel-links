@@ -14,32 +14,33 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^5.22.0",
-    "next": "^14.2.21",
-    "next-themes": "^0.3.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "@prisma/client": "^6.3.1",
+    "next": "^15.1.6",
+    "next-themes": "^0.4.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@radix-ui/react-dropdown-menu": "^2.1.4",
-    "@types/node": "^20.17.10",
-    "@types/react": "^18.3.18",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "^14.2.21",
-    "eslint-config-prettier": "^9.1.0",
-    "postcss": "^8.4.49",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.19.0",
+    "@radix-ui/react-dropdown-menu": "^2.1.6",
+    "@tailwindcss/postcss": "^4.0.4",
+    "@types/node": "^22.13.1",
+    "@types/react": "^19.0.8",
+    "eslint": "^9.19.0",
+    "eslint-config-next": "^15.1.6",
+    "eslint-config-prettier": "^10.0.1",
+    "postcss": "^8.5.1",
     "prettier": "^3.4.2",
-    "prettier-plugin-tailwindcss": "^0.6.9",
-    "prisma": "^5.22.0",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.2"
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "prisma": "^6.3.1",
+    "tailwindcss": "^4.0.4",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.23.0"
   },
   "engines": {
     "node": "^22.0.0",
     "pnpm": ">=9"
   },
-  "packageManager": "pnpm@9.15.1+sha512.1acb565e6193efbebda772702950469150cf12bcc764262e7587e71d19dc98a423dff9536e57ea44c49bdf790ff694e83c27be5faa23d67e0c033b583be4bfcf"
+  "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92"
 }
