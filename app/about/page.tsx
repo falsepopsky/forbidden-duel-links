@@ -6,9 +6,9 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <main className='mx-auto w-full max-w-screen-md px-2 leading-7 md:px-0'>
+    <main className='mx-auto w-full max-w-(--breakpoint-md) px-2 leading-7 md:px-0'>
       <section>
-        <h2 className='mb-5 mt-12 text-2xl/relaxed text-violet-700 dark:text-violet-500 md:text-4xl/relaxed'>ABOUT</h2>
+        <h2 className='mt-12 mb-5 text-2xl/relaxed text-violet-700 md:text-4xl/relaxed dark:text-violet-500'>ABOUT</h2>
 
         <p className='mb-4'>I initiated this project for two main reasons:</p>
 
@@ -28,7 +28,7 @@ export default function About() {
       </section>
 
       <section className='mb-5'>
-        <h2 className='mb-5 mt-12 text-2xl/relaxed text-violet-700 dark:text-violet-500 md:text-4xl/relaxed'>
+        <h2 className='mt-12 mb-5 text-2xl/relaxed text-violet-700 md:text-4xl/relaxed dark:text-violet-500'>
           CONTRIBUTION
         </h2>
 

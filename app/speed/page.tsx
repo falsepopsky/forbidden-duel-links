@@ -26,7 +26,7 @@ export default async function Banlist() {
             <li key={id}>
               <Link
                 href={`/speed/${slug}`}
-                className='focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600'>
+                className='focus-visible:outline focus-visible:outline-teal-500 active:outline active:outline-teal-600'>
                 {slug}
               </Link>
             </li>
@@ -37,11 +37,11 @@ export default async function Banlist() {
   });
 
   return (
-    <main className='mx-auto flex w-full max-w-screen-xl flex-col flex-nowrap items-center justify-center gap-4'>
-      <h1 className='mb-5 mt-28 min-w-fit bg-gradient-to-t from-zinc-900 to-zinc-600 bg-clip-text px-2 text-center text-4xl font-normal text-transparent drop-shadow-lg dark:from-teal-400 dark:to-teal-700 md:text-5xl/snug lg:mt-32 xl:mt-36'>
+    <main className='mx-auto flex w-full max-w-(--breakpoint-xl) flex-col flex-nowrap items-center justify-center gap-4'>
+      <h1 className='mt-28 mb-5 min-w-fit bg-linear-to-t from-zinc-900 to-zinc-600 bg-clip-text px-2 text-center text-4xl font-normal text-transparent drop-shadow-lg md:text-5xl/snug lg:mt-32 xl:mt-36 dark:from-teal-400 dark:to-teal-700'>
         Speed Duel Banlist Archive
       </h1>
-      <p className='mb-4 mt-6 max-w-lg px-2 text-center md:max-w-2xl md:text-lg/relaxed'>
+      <p className='mt-6 mb-4 max-w-lg px-2 text-center md:max-w-2xl md:text-lg/relaxed'>
         Each year features the dates of the applied banlists, which contain the changes. Explore these dates to discover
         how card restrictions have influenced competitive play.
       </p>
