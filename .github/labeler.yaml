@@ -14,5 +14,5 @@
       - any-glob-to-any-file:
           - ".prettierrc"
           - next.config.js
-          - ".eslintrc.json"
+          - "eslint.config.mjs"
           - ".devcontainer/**"
