@@ -12,7 +12,7 @@ export const Navbar = () => {
   const linkPages = links.map((link) => (
     <Link
       key={link.id}
-      className='hidden hover:opacity-80 focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600 sm:block'
+      className='hidden hover:opacity-80 focus-visible:outline focus-visible:outline-teal-500 active:outline active:outline-teal-600 sm:block'
       href={link.path}>
       {link.name}
     </Link>
@@ -23,7 +23,7 @@ export const Navbar = () => {
       <Link
         href='/'
         aria-label='Link to home page'
-        className='hover:opacity-80 focus-visible:outline focus-visible:outline-1 focus-visible:outline-teal-500 active:outline active:outline-1 active:outline-teal-600'>
+        className='hover:opacity-80 focus-visible:outline focus-visible:outline-teal-500 active:outline active:outline-teal-600'>
         Forbidden Duel Links
       </Link>
 
